@@ -2,6 +2,12 @@
 <h1> Get all birthdays from Facebook </h1>
 A Python script to retrieve all birthdays from your friends on Facebook.
 
+A couple of years ago I deleted my FB account, realized I only used it to keep track of my friend's birthdays. 
+I used the following code to download the birthdays from my account.
+
+Before you start:
+* Get the right geckodriver: every Chrome / Firefox instance needs a different geckodriver
+* I'm using Firefox here, change that to your favorite browser
 
 ```python
 from selenium import webdriver
