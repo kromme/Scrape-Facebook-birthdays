@@ -28,17 +28,15 @@ Fire up Firefox and go to the birthday's page, go to Firefox and log on in Faceb
 ```python
 driver = webdriver.Firefox(executable_path= webdriver_path)
 driver.get('https://www.facebook.com/events/birthdays/')
-# ! log on on FB
 ```
-
+Make sure you're logged in. The following part scrolls all the way done so all birthdays are loaded.
 
 ```python
 # scroll all the way down
 for scroll in xrange(20):
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 ```
-
-
+Scrape the names
 ```python
 # define lists
 names = []
@@ -61,20 +59,13 @@ for person in driver.find_elements_by_xpath(xpaths['friends']):
     bds.append(bd)
 ```
 
+Get the results
 
 ```python
-print 'Got %d friends' % len(names)
-```
+print('Got %d friends' % len(names))
 
-
-```python
 # save to csv
 bd_db = pd.DataFrame({'Name': names, 'BD': bds})
 bd_db['Name'] = bd_db['Name'].str.encode("ascii","ignore")
 bd_db.to_csv('%s FB Birthdays.csv' % str(time.strftime('%Y%m%d')))
-```
-
-
-```python
-
 ```
